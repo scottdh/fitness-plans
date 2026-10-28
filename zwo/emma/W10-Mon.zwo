@@ -1,0 +1,23 @@
+<workout_file>
+  <author>Emma</author>
+  <name>W10 Mon - 2x12 at 85%</name>
+  <description>Two 12' blocks. If the nap's still going, keep riding easy in free ride once the workout ends. (35 min)</description>
+  <sportType>bike</sportType>
+  <category>Nap-Time Rides</category>
+  <tags><tag name="Stronger"/></tags>
+  <workout>
+    <Warmup Duration="300" PowerLow="0.45" PowerHigh="0.60"/>
+    <SteadyState Duration="720" Power="0.85">
+      <textevent timeoffset="0" message="Strong and steady."/>
+    </SteadyState>
+    <SteadyState Duration="180" Power="0.55"/>
+    <SteadyState Duration="720" Power="0.85">
+      <textevent timeoffset="0" message="Last one. Hold it."/>
+    </SteadyState>
+    <Cooldown Duration="180" PowerLow="0.55" PowerHigh="0.40">
+      <textevent timeoffset="0" message="Pelvic floor time while you spin: 10 slow squeezes, hold up to 10 seconds, relax fully between."/>
+      <textevent timeoffset="100" message="Now 10 quick squeezes: squeeze and let go."/>
+      <textevent timeoffset="160" message="Done. Nice work."/>
+    </Cooldown>
+  </workout>
+</workout_file>

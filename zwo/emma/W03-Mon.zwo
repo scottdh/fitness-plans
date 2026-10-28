@@ -1,0 +1,19 @@
+<workout_file>
+  <author>Emma</author>
+  <name>W03 Mon - 3x4 steady</name>
+  <description>Three 4' steady efforts. If the nap's still going, keep riding easy in free ride once the workout ends. (25 min)</description>
+  <sportType>bike</sportType>
+  <category>Nap-Time Rides</category>
+  <tags><tag name="Find your legs"/></tags>
+  <workout>
+    <Warmup Duration="240" PowerLow="0.45" PowerHigh="0.60"/>
+    <IntervalsT Repeat="3" OnDuration="240" OffDuration="120" OnPower="0.72" OffPower="0.55">
+      <textevent timeoffset="0" message="Steady: you can still chat in sentences."/>
+    </IntervalsT>
+    <Cooldown Duration="180" PowerLow="0.55" PowerHigh="0.40">
+      <textevent timeoffset="0" message="Pelvic floor time while you spin: 10 slow squeezes, hold up to 10 seconds, relax fully between."/>
+      <textevent timeoffset="100" message="Now 10 quick squeezes: squeeze and let go."/>
+      <textevent timeoffset="160" message="Done. Nice work."/>
+    </Cooldown>
+  </workout>
+</workout_file>

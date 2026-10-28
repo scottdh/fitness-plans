@@ -1,0 +1,21 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W10 Sat - Z2 + 2x15 tempo</name>
+  <description>Long ride with tempo. (110 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Engine"/></tags>
+  <workout>
+    <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65"/>
+    <SteadyState Duration="1200" Power="0.65"/>
+    <SteadyState Duration="900" Power="0.80">
+      <textevent timeoffset="0" message="Tempo."/>
+    </SteadyState>
+    <SteadyState Duration="600" Power="0.65"/>
+    <SteadyState Duration="900" Power="0.80">
+      <textevent timeoffset="0" message="Tempo."/>
+    </SteadyState>
+    <SteadyState Duration="2100" Power="0.65"/>
+    <Cooldown Duration="300" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

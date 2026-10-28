@@ -1,0 +1,16 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W10 Thu - Z2 + 2x10 tempo</name>
+  <description>Zone 2 with tempo. Thursday fallback if no weekend ride. (45 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Engine"/></tags>
+  <workout>
+    <Warmup Duration="480" PowerLow="0.45" PowerHigh="0.65"/>
+    <IntervalsT Repeat="2" OnDuration="600" OffDuration="300" OnPower="0.80" OffPower="0.60">
+      <textevent timeoffset="0" message="Tempo: steady, focused, still able to speak in short phrases."/>
+    </IntervalsT>
+    <SteadyState Duration="180" Power="0.65"/>
+    <Cooldown Duration="240" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

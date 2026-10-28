@@ -1,0 +1,15 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W05 Sat - Z2 90</name>
+  <description>Zone 2 endurance. (90 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Engine"/></tags>
+  <workout>
+    <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65"/>
+    <SteadyState Duration="4500" Power="0.65">
+      <textevent timeoffset="0" message="Zone 2. Smooth and conversational. Nose-breathing pace."/>
+    </SteadyState>
+    <Cooldown Duration="300" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

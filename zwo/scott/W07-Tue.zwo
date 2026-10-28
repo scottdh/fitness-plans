@@ -1,0 +1,27 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W07 Tue - 3x10 sweet spot</name>
+  <description>Sweet spot. (45 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Engine"/></tags>
+  <workout>
+    <Warmup Duration="360" PowerLow="0.45" PowerHigh="0.65"/>
+    <SteadyState Duration="600" Power="0.90">
+      <textevent timeoffset="0" message="Sweet spot. Comfortably hard, steady breathing."/>
+    </SteadyState>
+    <SteadyState Duration="180" Power="0.55">
+      <textevent timeoffset="0" message="Easy spin."/>
+    </SteadyState>
+    <SteadyState Duration="600" Power="0.90">
+      <textevent timeoffset="0" message="Sweet spot. Comfortably hard, steady breathing."/>
+    </SteadyState>
+    <SteadyState Duration="180" Power="0.55">
+      <textevent timeoffset="0" message="Easy spin."/>
+    </SteadyState>
+    <SteadyState Duration="600" Power="0.90">
+      <textevent timeoffset="0" message="Sweet spot. Comfortably hard, steady breathing."/>
+    </SteadyState>
+    <Cooldown Duration="180" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

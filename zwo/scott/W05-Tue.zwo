@@ -1,0 +1,15 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W05 Tue - 2x12 sweet spot</name>
+  <description>First sweet spot session. (45 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Engine"/></tags>
+  <workout>
+    <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65"/>
+    <IntervalsT Repeat="2" OnDuration="720" OffDuration="240" OnPower="0.90" OffPower="0.55">
+      <textevent timeoffset="0" message="Sweet spot. Comfortably hard."/>
+    </IntervalsT>
+    <Cooldown Duration="180" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

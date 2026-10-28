@@ -1,0 +1,17 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W02 Tue - Z2 + 3x5 tempo</name>
+  <description>Zone 2 with short tempo blocks. (45 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Rebuild"/></tags>
+  <workout>
+    <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65"/>
+    <SteadyState Duration="300" Power="0.65"/>
+    <IntervalsT Repeat="3" OnDuration="300" OffDuration="180" OnPower="0.80" OffPower="0.60">
+      <textevent timeoffset="0" message="Tempo: steady, focused, still able to speak in short phrases."/>
+    </IntervalsT>
+    <SteadyState Duration="60" Power="0.65"/>
+    <Cooldown Duration="300" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

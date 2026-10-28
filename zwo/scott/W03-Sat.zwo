@@ -1,0 +1,17 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W03 Sat - Drift test</name>
+  <description>Aerobic decoupling test. Fan on, bottle full, ERG on. Log average HR for minutes 15-45 and 45-75 in the tracker. (80 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Rebuild"/></tags>
+  <workout>
+    <Warmup Duration="900" PowerLow="0.45" PowerHigh="0.65"/>
+    <SteadyState Duration="3600" Power="0.67">
+      <textevent timeoffset="0" message="Drift test starts. Hold this power, no surges, steady cadence."/>
+      <textevent timeoffset="1800" message="Halfway. Note your average HR for the first half (min 15-45)."/>
+      <textevent timeoffset="3540" message="Last minute. Note your average HR for the second half (min 45-75)."/>
+    </SteadyState>
+    <Cooldown Duration="300" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

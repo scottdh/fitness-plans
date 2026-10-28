@@ -1,0 +1,23 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W20 Thu - Short openers</name>
+  <description>Short openers the day before or two before the target ride. Thursday fallback if no weekend ride. (30 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Group-ride"/></tags>
+  <workout>
+    <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65"/>
+    <IntervalsT Repeat="2" OnDuration="120" OffDuration="180" OnPower="1.05" OffPower="0.55">
+      <textevent timeoffset="0" message="Openers."/>
+    </IntervalsT>
+    <FreeRide Duration="15" FlatRoad="1">
+      <textevent timeoffset="0" message="Sprint!"/>
+    </FreeRide>
+    <SteadyState Duration="165.0" Power="0.55"/>
+    <FreeRide Duration="15" FlatRoad="1">
+      <textevent timeoffset="0" message="Sprint!"/>
+    </FreeRide>
+    <SteadyState Duration="165.0" Power="0.55"/>
+    <Cooldown Duration="240" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

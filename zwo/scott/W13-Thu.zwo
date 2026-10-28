@@ -1,0 +1,16 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W13 Thu - Z2 + 4x3 tempo</name>
+  <description>Zone 2 with tempo. Thursday fallback if no weekend ride. (45 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Group-ride"/></tags>
+  <workout>
+    <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65"/>
+    <IntervalsT Repeat="4" OnDuration="180" OffDuration="180" OnPower="0.82" OffPower="0.60">
+      <textevent timeoffset="0" message="Tempo."/>
+    </IntervalsT>
+    <SteadyState Duration="360" Power="0.65"/>
+    <Cooldown Duration="300" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>

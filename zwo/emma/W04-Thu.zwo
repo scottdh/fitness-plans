@@ -1,0 +1,20 @@
+<workout_file>
+  <author>Emma</author>
+  <name>W04 Thu - Easy + quick legs</name>
+  <description>Lighter week. If the nap's still going, keep riding easy in free ride once the workout ends. (20 min)</description>
+  <sportType>bike</sportType>
+  <category>Nap-Time Rides</category>
+  <tags><tag name="Find your legs"/></tags>
+  <workout>
+    <Warmup Duration="300" PowerLow="0.45" PowerHigh="0.60"/>
+    <IntervalsT Repeat="3" OnDuration="60" OffDuration="120" OnPower="0.60" OffPower="0.55" Cadence="95" CadenceResting="85">
+      <textevent timeoffset="0" message="Quick legs: spin faster, 90+ rpm, light gear. Smooth, not bouncy."/>
+    </IntervalsT>
+    <SteadyState Duration="180" Power="0.60"/>
+    <Cooldown Duration="180" PowerLow="0.55" PowerHigh="0.40">
+      <textevent timeoffset="0" message="Pelvic floor time while you spin: 10 slow squeezes, hold up to 10 seconds, relax fully between."/>
+      <textevent timeoffset="100" message="Now 10 quick squeezes: squeeze and let go."/>
+      <textevent timeoffset="160" message="Done. Nice work."/>
+    </Cooldown>
+  </workout>
+</workout_file>

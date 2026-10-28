@@ -1,0 +1,17 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W08 Tue - Z2 + 4x1 high cadence</name>
+  <description>Deload week. (45 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Engine"/></tags>
+  <workout>
+    <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65"/>
+    <SteadyState Duration="720" Power="0.65"/>
+    <IntervalsT Repeat="4" OnDuration="60" OffDuration="60" OnPower="0.65" OffPower="0.60" Cadence="105" CadenceResting="85">
+      <textevent timeoffset="0" message="High cadence: 100+ rpm, light gear, quiet upper body."/>
+    </IntervalsT>
+    <SteadyState Duration="600" Power="0.65"/>
+    <Cooldown Duration="300" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>
