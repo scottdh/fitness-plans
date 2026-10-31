@@ -10,7 +10,7 @@ Each person signs in with their email and only sees their own plan and logs.
 ## Setup (about 15 minutes, once)
 
 ### 1. Create the Supabase project
-1. Sign up at [supabase.com](https://supabase.com) and create a new project (the free tier is plenty). Pick the London region.
+1. Sign up at [supabase.com](https://supabase.com) and create a new project (the free tier is plenty). Pick the London region. Under **Security**, keep **Enable Data API** on, switch **Automatically expose new tables** off, and switch **Enable automatic RLS** on. The schema script grants access to just the two tables this site uses.
 2. Open **SQL Editor → New query**, paste the contents of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**. This creates the `profiles` and `logs` tables, with row-level security so each person can only read and write their own rows.
 3. Open **Project Settings → API** and copy the **Project URL** and the **anon public** key into [`config.js`](config.js). The anon key is designed to be public: the security rules do the protecting.
 

@@ -15,6 +15,11 @@ create table if not exists public.logs (
   primary key (user_id, session_key)
 );
 
+-- Only signed-in users can reach these tables at all (needed when the project
+-- was created with "Automatically expose new tables" switched off).
+revoke all on public.profiles, public.logs from anon;
+grant select, insert, update, delete on public.profiles, public.logs to authenticated;
+
 alter table public.profiles enable row level security;
 alter table public.logs     enable row level security;
 
