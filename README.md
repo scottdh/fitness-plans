@@ -5,7 +5,7 @@ Zwift training plans and session logs for Scott and Emma, hosted on GitHub Pages
 - **Scott: Spring Group-Ride Build.** 20 weeks from 2 Nov 2026 to a faster club group ride in March, alongside a Mon/Wed/Fri kettlebell week.
 - **Emma: Nap-Time Rides.** 12 weeks from 2 Nov 2026 with two short rides a week (Mon/Thu) around yoga and boxing. Each ride is a 20–35 minute core you can extend if the nap runs long.
 
-Each person signs in with their email and only sees their own plan and logs.
+Each person signs in with their email and password, and only sees their own plan and logs.
 
 ## Setup (about 15 minutes, once)
 
@@ -14,24 +14,23 @@ Each person signs in with their email and only sees their own plan and logs.
 2. Open **SQL Editor → New query**, paste the contents of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**. This creates the `profiles` and `logs` tables, with row-level security so each person can only read and write their own rows.
 3. Open **Project Settings → API** and copy the **Project URL** and the **anon public** key into [`config.js`](config.js). The anon key is designed to be public: the security rules do the protecting.
 
-### 2. Turn on GitHub Pages
+### 2. Create your two accounts
+Sign-in uses email and password, so Supabase never needs to send an email.
+1. Open **Authentication → Users → Add user → Create new user**.
+2. Enter the email and a password, and tick **Auto Confirm User**. Repeat for the second person.
+3. Open **Authentication → Sign In / Providers** and switch off **Allow new users to sign up**, so nobody else can create an account. Your two accounts keep working.
+
+To change a password later, open the user in **Authentication → Users** and set a new one.
+
+### 3. Turn on GitHub Pages
 1. In the repo, open **Settings → Pages**.
 2. Set **Source** to *Deploy from a branch*, branch `main`, folder `/ (root)`, then save.
-3. After a minute the site is live at `https://<your-username>.github.io/<repo-name>/`.
+3. After a minute the site is live at `https://scottdh.github.io/fitness-plans/`.
 
-### 3. Point Supabase sign-in at the site
-1. In Supabase, open **Authentication → URL Configuration**.
-2. Set **Site URL** to your Pages address, and add the same address under **Redirect URLs**.
-3. Open **Authentication → Email Templates → Magic Link** and add a line with the code, so it works from a home-screen app too:
-   ```html
-   <p>Or enter this code: <strong>{{ .Token }}</strong></p>
-   ```
+### 4. Sign in
+Each of you opens the site, signs in and picks your plan. You stay signed in on that device.
 
-### 4. Sign in, then lock it down
-1. Both of you open the site, sign in with your email and pick your plan.
-2. Then in Supabase open **Authentication → Providers → Email** (or **Sign In / Providers**) and switch off **Allow new users to sign up**. Your accounts keep working, and nobody else can create one.
-
-**On a phone:** open the site in Safari, tap Share → **Add to Home Screen**. Sign in with the 6-digit code from the email; the link opens Safari rather than the home-screen app.
+**On a phone:** open the site in Safari, tap Share → **Add to Home Screen**, then sign in from the home-screen app. Saving the password to your keychain makes this a one-tap job.
 
 ## Zwift workouts
 `zwo/scott/` and `zwo/emma/` hold the structured workouts, and `zwo/scott.zip` / `zwo/emma.zip` hold each full set. Each session on the site links its own file, and the footer links the zip.

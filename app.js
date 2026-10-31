@@ -21,7 +21,7 @@ if (!window.supabase?.createClient) {
   return;
 }
 sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, {
-  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false }
 });
 
 fetch("zwo/index.json").then(r => r.ok ? r.json() : []).then(list => { zwoIndex = new Set(list); if (plan) renderPlan(); }).catch(() => {});
@@ -46,54 +46,35 @@ function showMessage(title, html) {
   app.innerHTML = `<section class="card auth"><h1>${esc(title)}</h1><p class="sub">${html}</p></section>`;
 }
 
-function renderSignIn(stage = "email", email = "") {
+function renderSignIn(email = "") {
   document.body.dataset.plan = "";
   app.innerHTML = `
     <section class="card auth" aria-labelledby="si-h">
       <div><div class="label">Zwift training plans</div><h1 id="si-h">Ride Plans</h1></div>
-      ${stage === "email" ? `
-      <p class="sub">Sign in with your email. We'll send a link and a 6-digit code.</p>
-      <form id="f-email">
-        <label for="si-email">Email<input id="si-email" type="email" autocomplete="email" required value="${esc(email)}"></label>
-        <button class="btn" type="submit">Send sign-in email</button>
-        <p class="msg" id="si-msg" role="status"></p>
-      </form>` : `
-      <p class="sub">Check <b>${esc(email)}</b>. Tap the link, or type the code here (handy if you've added this to your home screen).</p>
-      <form id="f-code">
-        <label for="si-code">6-digit code<input id="si-code" class="num" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required></label>
+      <p class="sub">Sign in with the email and password Scott set up for you.</p>
+      <form id="f-signin">
+        <label for="si-email">Email<input id="si-email" type="email" autocomplete="username" required value="${esc(email)}"></label>
+        <label for="si-pass">Password<input id="si-pass" type="password" autocomplete="current-password" required></label>
         <button class="btn" type="submit">Sign in</button>
-        <button class="linkbtn" type="button" id="si-back">Use a different email</button>
         <p class="msg" id="si-msg" role="status"></p>
-      </form>`}
+      </form>
     </section>`;
-  if (stage === "email") {
-    $("#f-email").addEventListener("submit", async e => {
-      e.preventDefault();
-      const addr = $("#si-email").value.trim(); const msg = $("#si-msg"); const btn = $("#f-email .btn");
-      btn.disabled = true; msg.textContent = "Sending…";
-      const { error } = await sb.auth.signInWithOtp({ email: addr, options: { emailRedirectTo: location.origin + location.pathname } });
-      btn.disabled = false;
-      if (error) { msg.textContent = friendlyAuthError(error); return; }
-      renderSignIn("code", addr);
-    });
-  } else {
-    $("#si-back").addEventListener("click", () => renderSignIn("email", email));
-    $("#f-code").addEventListener("submit", async e => {
-      e.preventDefault();
-      const token = $("#si-code").value.trim(); const msg = $("#si-msg"); const btn = $("#f-code .btn");
-      btn.disabled = true; msg.textContent = "Checking…";
-      const { error } = await sb.auth.verifyOtp({ email, token, type: "email" });
-      btn.disabled = false;
-      if (error) msg.textContent = "That code didn't work. Check it, or request a new email.";
-    });
-  }
+  $("#f-signin").addEventListener("submit", async e => {
+    e.preventDefault();
+    const addr = $("#si-email").value.trim(); const msg = $("#si-msg"); const btn = $("#f-signin .btn");
+    btn.disabled = true; msg.textContent = "Signing in…";
+    const { error } = await sb.auth.signInWithPassword({ email: addr, password: $("#si-pass").value });
+    btn.disabled = false;
+    if (error) msg.textContent = friendlyAuthError(error);
+  });
 }
 
 function friendlyAuthError(err) {
   const m = (err?.message || "").toLowerCase();
-  if (m.includes("signups not allowed") || m.includes("not allowed")) return "This email isn't set up for Ride Plans.";
-  if (m.includes("rate")) return "Too many emails sent. Wait a minute and try again.";
-  return "Couldn't send the email. Check the address and try again.";
+  if (m.includes("invalid login") || m.includes("invalid credentials")) return "That email and password don't match. Check them and try again.";
+  if (m.includes("not confirmed")) return "This account isn't confirmed yet. In Supabase, open the user and confirm their email.";
+  if (m.includes("rate") || m.includes("too many")) return "Too many attempts. Wait a minute and try again.";
+  return "Couldn't sign in. Check your connection and try again.";
 }
 
 async function loadUser() {
