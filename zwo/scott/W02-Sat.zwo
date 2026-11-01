@@ -1,17 +1,17 @@
 <workout_file>
   <author>Scott</author>
-  <name>W01 Tue - Z2 + 5x1 high cadence</name>
-  <description>Zone 2 with leg-speed drills. (45 min)</description>
+  <name>W02 Sat - Z2 75 + 5x1 high cadence</name>
+  <description>Zone 2 endurance with leg-speed drills. (75 min)</description>
   <sportType>bike</sportType>
   <category>Spring Build</category>
   <tags><tag name="Rebuild"/></tags>
   <workout>
     <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65"/>
-    <SteadyState Duration="600" Power="0.65"/>
+    <SteadyState Duration="1200" Power="0.65"/>
     <IntervalsT Repeat="5" OnDuration="60" OffDuration="60" OnPower="0.65" OffPower="0.60" Cadence="105" CadenceResting="85">
       <textevent timeoffset="0" message="High cadence: 100+ rpm, light gear, quiet upper body."/>
     </IntervalsT>
-    <SteadyState Duration="600" Power="0.65"/>
+    <SteadyState Duration="1800" Power="0.65"/>
     <Cooldown Duration="300" PowerLow="0.62" PowerHigh="0.40"/>
   </workout>
 </workout_file>

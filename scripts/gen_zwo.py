@@ -92,11 +92,13 @@ def openers(): return [IT(3, 120, 1.05, 180, 0.55, msg="Openers: wake the legs u
 P1, P2, P3 = "Rebuild", "Engine", "Group-ride"
 def thu(week, steps, title, desc, ph): W(week, "Thu", title, desc + " Thursday fallback if no weekend ride.", steps, ph)
 # Week 1
-W(1,"Tue","Z2 + 5x1 high cadence","Zone 2 with leg-speed drills.",[WU(10),z2(10),cad(5),z2(10),CD(5)],P1)
+# Week 1 Tue = Zwift built-in ramp test
 W(1,"Sat","Z2 75","Zone 2 endurance.",z2ride(75),P1)
 thu(1,z2ride(45),"Z2 45","Zone 2.",P1)
-# Week 2 (Sat/Thu = Zwift built-in ramp test)
+# Week 2
 W(2,"Tue","Z2 + 3x5 tempo","Zone 2 with short tempo blocks.",[WU(10),z2(5),tempo(3,5,3),z2(1),CD(5)],P1)
+W(2,"Sat","Z2 75 + 5x1 high cadence","Zone 2 endurance with leg-speed drills.",[WU(10),z2(20),cad(5),z2(30),CD(5)],P1)
+thu(2,z2ride(45),"Z2 45","Zone 2.",P1)
 # Week 3
 W(3,"Tue","3x8 tempo","Tempo blocks.",[WU(8),tempo(3,8,3),CD(4)],P1)
 W(3,"Sat","Drift test","Aerobic decoupling test. Fan on, bottle full, ERG on. Log average HR for minutes 15-45 and 45-75 in the tracker.",

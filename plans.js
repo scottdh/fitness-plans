@@ -9,7 +9,7 @@ window.PLANS = {
     goal: "Hold a faster club group by spring, keeping the kettlebell week intact.",
     start: "2026-11-02",
     phases: [
-      { id: 1, name: "Rebuild", range: "Weeks 1–4", blurb: "Mostly Zone 2. Ramp test end of week 2." },
+      { id: 1, name: "Rebuild", range: "Weeks 1–4", blurb: "Ramp test first Tuesday, then mostly Zone 2." },
       { id: 2, name: "Engine", range: "Weeks 5–12", blurb: "Sweet spot Tuesdays, longer weekends. Retest week 12." },
       { id: 3, name: "Group-ride", range: "Weeks 13–20", blurb: "Surges, over-unders and group rides. Outdoors from March." }
     ],
@@ -28,8 +28,8 @@ window.PLANS = {
       fallbackLabel: "No weekend ride? Thu"
     },
     weeks: [
-      { ph: 1, tue: "45′ Z2 with 5×1′ high cadence (100+ rpm)", sat: "Z2 endurance", satMin: 75, thu: "45′ Z2" },
-      { ph: 1, tue: "45′ Z2 with 3×5′ tempo @ 76–85%", sat: "Ramp test, then 30′ easy spin", satMin: 50, thu: "Ramp test", test: "sat" },
+      { ph: 1, tue: "Ramp test (Zwift's built-in test sets your FTP)", sat: "Z2 endurance", satMin: 75, thu: "45′ Z2", test: "tue" },
+      { ph: 1, tue: "45′ Z2 with 3×5′ tempo @ 76–85%", sat: "Z2 with 5×1′ high cadence (100+ rpm)", satMin: 75, thu: "45′ Z2" },
       { ph: 1, tue: "45′ with 3×8′ tempo @ 76–85%", sat: "Drift test: 15′ warm-up, 60′ steady @ 65–70%, 5′ easy. No surges, same power throughout", satMin: 80, thu: "45′ Z2 (the drift test needs 80′, so move it to a weekend later)", drift: true },
       { ph: 1, tue: "40′ easy Z2", sat: "Z2 endurance, easy", satMin: 75, thu: "40′ Z2", deload: true },
       { ph: 2, tue: "2×12′ sweet spot @ 88–93%, 4′ easy between", sat: "Z2 endurance", satMin: 90, thu: "45′ Z2 with 2×8′ tempo" },
@@ -50,6 +50,7 @@ window.PLANS = {
       { ph: 3, tue: "Openers: 3×2′ @ 105%, 3×15″ sprints", sat: "Target: club ride with the faster group", satMin: 150, thu: "Short openers", target: true }
     ],
     tueMinutes: 45,
+    // Week 1 Tuesday is a ramp test (~25 min); the chart uses 45 for every Tuesday.
     zwoPath: "zwo/scott/",
     pelvicFloor: false
   },
