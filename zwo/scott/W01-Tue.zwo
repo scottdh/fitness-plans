@@ -1,0 +1,15 @@
+<workout_file>
+  <author>Scott</author>
+  <name>W01 Tue - Easy spin 35</name>
+  <description>Easy spin. Ride by feel and keep HR in the low end of Zone 2; lower the power if HR creeps up. (35 min)</description>
+  <sportType>bike</sportType>
+  <category>Spring Build</category>
+  <tags><tag name="Rebuild"/></tags>
+  <workout>
+    <Warmup Duration="300" PowerLow="0.45" PowerHigh="0.55"/>
+    <SteadyState Duration="1620" Power="0.55">
+      <textevent timeoffset="0" message="Easy. Chatty pace. If HR creeps up, ease off."/>
+    </SteadyState>
+    <Cooldown Duration="180" PowerLow="0.62" PowerHigh="0.40"/>
+  </workout>
+</workout_file>
