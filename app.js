@@ -257,7 +257,7 @@ function setStatus(text, err = false) { const s = $("#status"); if (s) { s.textC
 function buildForm(f, k, slot, w, i) {
   const L = logs[k] || {}; const ride = RIDE_KINDS.includes(slot.kind); const drift = w.drift && slot.kind === "long";
   const num = (id, label, v) => `<label for="${k}-${id}">${label}<input id="${k}-${id}" class="num" type="number" inputmode="numeric" value="${v ?? ""}"></label>`;
-  const seg = (name, val) => `<div class="seg" role="group" aria-label="${name}">${[1, 2, 3, 4, 5].map(n => `<button type="button" data-v="${n}" aria-pressed="${val == n}">${n}</button>`).join("")}</div>`;
+  const seg = (name, key, val, max = 5) => `<div class="seg${max > 5 ? " wide" : ""}" role="group" aria-label="${name}" data-key="${key}">${Array.from({ length: max }, (_, i) => i + 1).map(n => `<button type="button" data-v="${n}" aria-pressed="${val == n}">${n}</button>`).join("")}</div>`;
   const swapText = slot.fallback ? `Swapped (${plan.labels.fallbackLabel.split(" ").pop()} ride)` : ride ? "Swapped / lighter" : "Swapped";
   const has = f => zwoIndex.has(`${plan.id}/${f}`); const thuF = `W${String(i + 1).padStart(2, "0")}-Thu`;
   const zf = ride && has(zwoFile(i, slot)) ? `<div class="zwo">Zwift workout: <a href="${plan.zwoPath}${zwoFile(i, slot)}.zwo" download>${zwoFile(i, slot)}.zwo</a>${slot.fallback && has(thuF) ? ` · Thu: <a href="${plan.zwoPath}${thuF}.zwo" download>${thuF}.zwo</a>` : ""}</div>` : "";
@@ -267,15 +267,16 @@ function buildForm(f, k, slot, w, i) {
     </select></label>
     ${ride ? num("dur", "Duration (min)", L.dur) + num("w", "Avg power (W)", L.watts) + num("hr", "Avg HR (bpm)", L.hr) : ""}
     ${drift ? num("dp", "Steady power (W)", L.dp) + num("hr1", "HR, 1st half (bpm)", L.hr1) + num("hr2", "HR, 2nd half (bpm)", L.hr2) : ""}
-    <label>Sleep (1–5)${seg("Sleep", L.sleep)}</label>
-    <label>Feel (1–5)${seg("Feel", L.feel)}</label>
+    <label>Sleep (1–5)${seg("Sleep", "sleep", L.sleep)}</label>
+    <label>Energy (1–5)${seg("Energy", "feel", L.feel)}</label>
+    ${ride ? `<label class="full">Effort (RPE 1–10, Zone 2 ≈ 3–4)${seg("Effort", "rpe", L.rpe, 10)}</label>` : ""}
     ${plan.pelvicFloor && ride ? `<label class="check full" for="${k}-pf"><input id="${k}-pf" type="checkbox" ${L.pf ? "checked" : ""}> Pelvic floor exercises done</label>` : ""}
     <label class="full" for="${k}-notes">Notes<textarea id="${k}-notes" rows="2">${esc(L.notes || "")}</textarea></label>
     ${zf}
     <div class="actions"><button class="btn" type="button">Save</button><span class="msg" role="status"></span></div>`;
-  const vals = { sleep: L.sleep ?? null, feel: L.feel ?? null };
-  $$(".seg", f).forEach((g, gi) => {
-    const name = gi === 0 ? "sleep" : "feel";
+  const vals = { sleep: L.sleep ?? null, feel: L.feel ?? null, rpe: L.rpe ?? null };
+  $$(".seg", f).forEach(g => {
+    const name = g.dataset.key;
     g.addEventListener("click", e => {
       const b = e.target.closest("button"); if (!b) return;
       vals[name] = vals[name] == b.dataset.v ? null : +b.dataset.v;
@@ -287,6 +288,7 @@ function buildForm(f, k, slot, w, i) {
     const n = id => { const el = $(`#${CSS.escape(k + "-" + id)}`, f); if (!el || el.value === "") return null; const v = +el.value; return Number.isFinite(v) ? v : null; };
     const body = { status: $(`#${CSS.escape(k + "-status")}`, f).value, sleep: vals.sleep, feel: vals.feel, notes: $(`#${CSS.escape(k + "-notes")}`, f).value.trim() };
     if (ride) {
+      body.rpe = vals.rpe;
       body.dur = n("dur"); body.watts = n("w"); body.hr = n("hr");
       if (body.dur && !body.status) { body.status = "done"; $(`#${CSS.escape(k + "-status")}`, f).value = "done"; }
     }
